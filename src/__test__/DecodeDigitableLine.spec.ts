@@ -27,4 +27,30 @@ describe("Testes responsáveis por aplicar regra de negócio sobre a decodifica�
       })
     ).rejects.toThrow();
   });
+
+  test("Espero que a data de validade do campo 5 esteja correta", async () => {
+    const decodeDigitableLine = new DecodeDigitableLine();
+    const DIGITAVEL = "23793381286008241354726000063300189630000002000";
+
+    const { campo_e } = await decodeDigitableLine.handle({
+      digitable_line: DIGITAVEL,
+    });
+
+    const { vencimento } = campo_e;
+
+    expect(vencimento).toBe("22/04/2022");
+  });
+
+  test("Espero que o valor do campo 5 esteja correto", async () => {
+    const decodeDigitableLine = new DecodeDigitableLine();
+    const DIGITAVEL = "23793381286008241354726000063300189630000002000";
+
+    const { campo_e } = await decodeDigitableLine.handle({
+      digitable_line: DIGITAVEL,
+    });
+
+    const { valor } = campo_e;
+
+    expect(valor).toBe(20);
+  });
 });
