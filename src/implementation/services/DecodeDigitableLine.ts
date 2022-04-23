@@ -114,6 +114,7 @@ class DecodeDigitableLine implements IDecodeDigitableLine {
     return Promise.resolve({
       valor: this_value,
       vencimento: vencimentoFormatado,
+      str_barcode_field: length
     });
   }
 }
