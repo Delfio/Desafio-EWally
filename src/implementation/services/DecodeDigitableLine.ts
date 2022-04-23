@@ -44,11 +44,14 @@ class DecodeDigitableLine implements IDecodeDigitableLine {
     const posicao_20_24 = length.slice(4, 9);
     const dv = length.slice(9, 10);
 
+    const str_barcode_field = length.slice(0, 9);
+
     return Promise.resolve({
       codigo_moeda: moeda,
       dv,
       instituicao_destinataria,
       posicao_20_24,
+      str_barcode_field 
     });
   }
 
@@ -56,9 +59,12 @@ class DecodeDigitableLine implements IDecodeDigitableLine {
     const length = digitable_line.slice(10, 21);
     const posicao_25_34 = length.slice(0, 10);
     const dv = length.slice(10, 11);
+    const str_barcode_field = length.slice(0, 10);
+
     return Promise.resolve({
       dv,
       posicao_25_34,
+      str_barcode_field 
     });
   }
 
@@ -66,9 +72,12 @@ class DecodeDigitableLine implements IDecodeDigitableLine {
     const length = digitable_line.slice(21, 32);
     const posicao_35_44 = length.slice(0, 10);
     const dv = length.slice(10, 11);
+    const str_barcode_field = length.slice(0, 10);
+    
     return Promise.resolve({
       dv,
       posicao_35_44,
+      str_barcode_field
     });
   }
 
