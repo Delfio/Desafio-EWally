@@ -1,4 +1,4 @@
-import ValidateCheckDigitInBarcodeField from "../implementation/services/ValidateCheckDigitInBarcodeField";
+import ValidateCheckDigitInBarcodeField from "../../implementation/services/ValidateCheckDigitInBarcodeField";
 
 describe("Testes responsáveis por validar a regra de negocio da validação do dígito verificador dos campos", () => {
   test("Espero que seja possível validar um dígito verificador", async () => {

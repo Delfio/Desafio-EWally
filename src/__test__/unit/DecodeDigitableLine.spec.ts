@@ -1,4 +1,4 @@
-import DecodeDigitableLine from "../implementation/services/DecodeDigitableLine";
+import DecodeDigitableLine from "../../implementation/services/DecodeDigitableLine";
 
 describe("Testes responsáveis por aplicar regra de negócio sobre a decodificação da validade do boleto", () => {
   test("Espero que seja possível decodificar uma linha digitável nos campos do código de barras", async () => {

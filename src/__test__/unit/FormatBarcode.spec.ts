@@ -1,4 +1,4 @@
-import FormatBarcode from "../implementation/services/FormatBarcode";
+import FormatBarcode from "../../implementation/services/FormatBarcode";
 
 describe("Testes responsáveis por validar regra de negocio em cima da montagem do código de barras final", () => {
   test("Espero que seja possível montar um corpo do código de barras dado uma linha digitável", async () => {
