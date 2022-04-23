@@ -25,7 +25,9 @@ class FormatBarcode implements IFormatBarcode {
     }
 
     if (typeof vencimento !== "string") {
-      expiration_date = vencimento.toLocaleString("pt-br");
+      expiration_date = vencimento.toLocaleString("pt-br", {
+        dateStyle: "short",
+      });
     } else {
       expiration_date = String(vencimento);
     }
