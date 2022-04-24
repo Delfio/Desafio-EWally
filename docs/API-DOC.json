@@ -1,0 +1,87 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Decoder Boleto",
+    "description": "Essa api consiste na resolução do desafio proposto para a vaga de desenvolvedor na empresa EWally - https://www.ewally.com.br/",
+    "contact": {
+      "email": "delfio_eu@hotmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333/",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "paths": {
+    "/boleto/{digitable_line}": {
+      "get": {
+        "summary": "searches inventory",
+        "description": "Endpoint responsável por aplicar a regra de decodificação do boleto\n",
+        "operationId": "searchInventory",
+        "parameters": [
+          {
+            "name": "digitable_line",
+            "in": "path",
+            "description": "Linha digitável do boleto",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BoletoDecoded"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BoletoDecoded": {
+        "required": [
+          "amount",
+          "expiration_date",
+          "str_barcode"
+        ],
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "string",
+            "example": "20.00"
+          },
+          "str_barcode": {
+            "type": "string",
+            "example": "21299758700000020000001121100012100447561740"
+          },
+          "expiration_date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}
