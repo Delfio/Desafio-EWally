@@ -3,7 +3,8 @@ import DecodeDigitableLine from "../services/DecodeDigitableLine";
 import ValidadeCheckDigitOfBarcode from "../services/ValidadeCheckDigitOfBarcode";
 import ValidateCheckDigitInBarcodeField from "../services/ValidateCheckDigitInBarcodeField";
 import FormatBarcode from "../services/FormatBarcode";
-
+import BoletoControllerCacheProxy from "../proxy/BoletoCacheProxy";
+import MemoryCache from "../providers/MemoryCache";
 
 export default () => {
   const decodeDigitableLine = new DecodeDigitableLine();
@@ -11,6 +12,7 @@ export default () => {
   const validateCheckDigitInBarcodeField =
     new ValidateCheckDigitInBarcodeField();
   const formatBarcode = new FormatBarcode();
+  const memoryCacheProvider = MemoryCache();
 
   const boletoController = new BoletoController(
     decodeDigitableLine,
@@ -19,5 +21,10 @@ export default () => {
     validadeCheckDigitOfBarcode
   );
 
-  return boletoController;
+  const _boletoControllerCacheProxy = new BoletoControllerCacheProxy(
+    boletoController,
+    memoryCacheProvider
+  );
+
+  return _boletoControllerCacheProxy;
 };
