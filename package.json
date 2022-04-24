@@ -4,7 +4,9 @@
   "description": "Este repositório contém o exame prático WAlly.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:unit": "npm test -- -c jest.unity.ts",
+    "test:integration": "npm test -- -c jest.integration.ts"
   },
   "keywords": [],
   "author": "",
