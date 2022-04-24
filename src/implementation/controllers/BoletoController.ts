@@ -18,10 +18,9 @@ class BoletoController implements IBoletoController {
     try {
       const { digitable_line } = req;
 
-      if(digitable_line.length !== 47) {
-        console.log(digitable_line.length)
+      if (digitable_line.length !== 47) {
+        console.log(digitable_line.length);
         throw new Error("Digitable line is invalid!");
-        
       }
       const decoded_digitable_line = await this.decodeDigitableLine.handle({
         digitable_line,
@@ -55,7 +54,7 @@ class BoletoController implements IBoletoController {
       );
 
       if (!!have_invalid_fields.length) {
-        console.log(have_invalid_fields)
+        console.log(have_invalid_fields);
         throw new Error("Digitable line is invalid!");
       }
 
@@ -77,7 +76,12 @@ class BoletoController implements IBoletoController {
         throw new Error("Barcode not valid!");
       }
 
-      return formated_bar_code;
+      const formated_result = {
+        amount: formated_bar_code.amount,
+        expiration_date: formated_bar_code.expiration_date,
+        str_barcode: formated_bar_code.str_barcode,
+      };
+      return formated_result;
     } catch (error) {
       console.log("Error on execute controller");
       console.log(error);
