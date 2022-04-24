@@ -1,6 +1,6 @@
-# Desafio prático WAlly
+# Desafio prático EWAlly
 
-Este repositório contém o exame prático WAlly.
+Este repositório contém o exame prático EWAlly.
 
 ## Desafio
 
@@ -21,15 +21,71 @@ barCode: Os 44 dígitos correspondentes ao código de barras desse boleto
 
 ## Requisitos funcionais
 
- - [] Decódificar o código de barras.
-    - [] Validar o código de barras (Boleto inválido ou Boleto inválido). 
- - [] Extrair a data de válidade do boleto
- - [] Extrair o valor do boleto
- - [] Deve ter compatilidade com boletos de titulos bancários e pagamentos de concessionárias.
- - [] Deve expor uma API Web
+ - [X] Decódificar o código de barras.
+    - [X] Validar o código de barras (Boleto inválido ou Boleto inválido). 
+ - [X] Extrair a data de válidade do boleto
+ - [X] Extrair o valor do boleto
+ - [X] Deve ter compatilidade com boletos de titulos bancários e pagamentos de concessionárias.
+ - [X] Deve expor uma API Web
 
 ## Requisitos N Funcionais
 
- - [] Cache dos resultados
- - [] Documentação de API (swagger)
- - [] TDD
+ - [X] Cache dos resultados
+ - [X] Documentação de API (swagger)
+ - [X] TDD
+
+## Como rodar
+
+ - Ter o Node na versão LTS > 16
+ - executar o comando 
+   ```cmd
+      npm i && npm run build && npm run server
+   ```
+
+## Paths
+
+ - Testes
+   
+   Os testes estão de integração e de unidades localizados na pasta:
+   ```
+   ./src
+   └───📁 __test__
+       └───📁 unity
+       └───📁 integration
+   ```
+
+ - Domínio da aplicação
+
+   As interfaces de entidade e domínio estão distribuidos da seguinte forma
+   ```
+   ./src
+   └───📁 domain
+       └───📁 controllers
+       └───📁 entities
+       └───📁 providers
+       └───📁 services
+   ```
+
+ - Implementação da regra de negocio
+
+   As sequência de pastas que contém a implementação das regras de negocio
+   ```
+   ./src
+   implementation
+       └───📁 controllers
+       └───📁 factory
+       └───📁 providers
+       └───📁 proxy
+       └───📁 services
+   ```
+
+ - Implementação da interface de exposição WEB
+
+   As sequência de pastas que contém a implementação da interface de exposição WEB
+   ```
+   ./src
+   infra
+       └───📁 controllers
+       └───📁 routes
+       └───📁 server
+   ```

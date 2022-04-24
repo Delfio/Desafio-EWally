@@ -1,16 +1,18 @@
 {
   "name": "desafio-wally",
   "version": "1.0.0",
-  "description": "Este repositório contém o exame prático WAlly.",
+  "description": "Este repositório contém o exame prático EWAlly.",
   "main": "./dist/src/index.js",
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modulest src/index.ts",
     "test": "jest",
     "test:unit": "npm test -- -c jest.unity.ts",
-    "test:integration": "npm test -- -c jest.integration.ts"
+    "test:integration": "npm test -- -c jest.integration.ts",
+    "build": "npx tsc",
+    "server": "node ."
   },
   "keywords": [],
-  "author": "",
+  "author": "delfio_eu@hotmail.com",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.13",
