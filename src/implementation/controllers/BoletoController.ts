@@ -19,7 +19,6 @@ class BoletoController implements IBoletoController {
       const { digitable_line } = req;
 
       if (digitable_line.length !== 47) {
-        console.log(digitable_line.length);
         throw new Error("Digitable line is invalid!");
       }
       const decoded_digitable_line = await this.decodeDigitableLine.handle({
@@ -54,7 +53,6 @@ class BoletoController implements IBoletoController {
       );
 
       if (!!have_invalid_fields.length) {
-        console.log(have_invalid_fields);
         throw new Error("Digitable line is invalid!");
       }
 
