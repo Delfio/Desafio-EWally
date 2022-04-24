@@ -288,40 +288,6 @@ describe("Testes responsáveis por validar a execução das regras de negocio do
     ).rejects.toThrow();
   });
 
-  test("Espero que caso mande um código inválido, um erro deverá ser retornado", async () => {
-    const DIGITAVEL = "invalid-fields-asdfasdf";
-
-    const DecodeDigitableLine: IDecodeDigitableLine = {
-      handle: jest.fn(),
-    };
-
-    const FormatBarcode: IFormatBarcode = {
-      handle: jest.fn(),
-    };
-
-    const ValidadeCheckDigitOfBarcode: IValidadeCheckDigitOfBarcode = {
-      handle: jest.fn(),
-    };
-
-    const ValidateCheckDigitInBarcodeField: IValidateCheckDigitInBarcodeField =
-      {
-        handle: jest.fn(),
-      };
-
-    const boletoController = new BoletoController(
-      DecodeDigitableLine,
-      ValidateCheckDigitInBarcodeField,
-      FormatBarcode,
-      ValidadeCheckDigitOfBarcode
-    );
-
-    await expect(
-      boletoController.handle({
-        digitable_line: DIGITAVEL,
-      })
-    ).rejects.toThrow();
-  });
-
   test("Espero que caso a validação dos dígitos verificadores derem inválidos um erro sera retornado", async () => {
     const DIGITAVEL = "23793381286008241354726000063300189630000002000";
 
