@@ -1,4 +1,4 @@
-import IGenericBarcodeFieldType from './IGenericBarcodeFieldType';
+import IGenericBarcodeFieldType from '../IGenericBarcodeFieldType';
 
 interface IBarcodeTypeE extends Omit<IGenericBarcodeFieldType, "dv">{
   vencimento: Date | String;

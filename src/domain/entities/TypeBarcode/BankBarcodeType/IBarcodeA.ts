@@ -1,4 +1,4 @@
-import IGenericBarcodeFieldType from './IGenericBarcodeFieldType';
+import IGenericBarcodeFieldType from '../IGenericBarcodeFieldType';
 
 interface IBarcodeTypeA extends IGenericBarcodeFieldType {
   instituicao_destinataria: string;

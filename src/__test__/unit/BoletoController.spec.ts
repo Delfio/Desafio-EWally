@@ -7,28 +7,30 @@ import IValidateCheckDigitInBarcodeField from "../../domain/services/IValidateCh
 function factory() {
   const DecodeDigitableLine: IDecodeDigitableLine = {
     handle: jest.fn().mockImplementation(async (any: any) => ({
-      campo_a: {
-        codigo_moeda: "9",
-        dv: "8",
-        instituicao_destinataria: "237",
-        posicao_20_24: "33812",
-        str_barcode_field: "237933812",
-      },
-      campo_b: {
-        dv: "7",
-        posicao_25_34: "6008241354",
-        str_barcode_field: "6008241354",
-      },
-      campo_c: {
-        dv: "0",
-        posicao_35_44: "2600006330",
-        str_barcode_field: "2600006330",
-      },
-      campo_d: { dv: "1" },
-      campo_e: {
-        valor: 20,
-        vencimento: "22/04/2022",
-        str_barcode_field: "89630000002000",
+      fields: {
+        campo_a: {
+          codigo_moeda: "9",
+          dv: "8",
+          instituicao_destinataria: "237",
+          posicao_20_24: "33812",
+          str_barcode_field: "237933812",
+        },
+        campo_b: {
+          dv: "7",
+          posicao_25_34: "6008241354",
+          str_barcode_field: "6008241354",
+        },
+        campo_c: {
+          dv: "0",
+          posicao_35_44: "2600006330",
+          str_barcode_field: "2600006330",
+        },
+        campo_d: { dv: "1" },
+        campo_e: {
+          valor: 20,
+          vencimento: "22/04/2022",
+          str_barcode_field: "89630000002000",
+        },
       },
     })),
   };
@@ -142,6 +144,7 @@ describe("Testes responsáveis por validar a execução das regras de negocio do
       digitable_line: DIGITAVEL,
     });
 
+    console.log(response)
     expect(response).not.toBeNull();
     expect(_validateCheckDigitInBarcodeField.handle).toHaveBeenCalled();
     expect(_validadeCheckDigitOfBarcode.handle).toHaveBeenCalled();

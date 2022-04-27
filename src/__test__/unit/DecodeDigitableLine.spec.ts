@@ -8,7 +8,7 @@ describe("Testes responsáveis por aplicar regra de negócio sobre a decodifica�
     const response = await decodeDigitableLine.handle({
       digitable_line: DIGITAVEL,
     });
-    const { campo_a, campo_b, campo_c, campo_d, campo_e } = response;
+    const { campo_a, campo_b, campo_c, campo_d, campo_e } = response.fields;
 
     expect(campo_a).not.toBeNull();
     expect(campo_b).not.toBeNull();
@@ -32,7 +32,9 @@ describe("Testes responsáveis por aplicar regra de negócio sobre a decodifica�
     const decodeDigitableLine = new DecodeDigitableLine();
     const DIGITAVEL = "23793381286008241354726000063300189630000002000";
 
-    const { campo_e } = await decodeDigitableLine.handle({
+    const {
+      fields: { campo_e },
+    } = await decodeDigitableLine.handle({
       digitable_line: DIGITAVEL,
     });
 
@@ -45,7 +47,9 @@ describe("Testes responsáveis por aplicar regra de negócio sobre a decodifica�
     const decodeDigitableLine = new DecodeDigitableLine();
     const DIGITAVEL = "23793381286008241354726000063300189630000002000";
 
-    const { campo_e } = await decodeDigitableLine.handle({
+    const {
+      fields: { campo_e },
+    } = await decodeDigitableLine.handle({
       digitable_line: DIGITAVEL,
     });
 

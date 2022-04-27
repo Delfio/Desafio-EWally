@@ -2,7 +2,6 @@ import FormatBarcode from "../../implementation/services/FormatBarcode";
 
 describe("Testes responsáveis por validar regra de negocio em cima da montagem do código de barras final", () => {
   test("Espero que seja possível montar um corpo do código de barras dado uma linha digitável", async () => {
-
     const formatBarcode = new FormatBarcode();
 
     const campo_a = {
@@ -30,14 +29,16 @@ describe("Testes responsáveis por validar regra de negocio em cima da montagem 
     };
 
     const result = await formatBarcode.handle({
-      campo_a,
-      campo_b,
-      campo_c,
-      campo_d,
-      campo_e
+      fields: {
+        campo_a,
+        campo_b,
+        campo_c,
+        campo_d,
+        campo_e,
+      },
     });
 
-    expect(result).not.toBeNull()
+    expect(result).not.toBeNull();
   });
 
   test("Espero código de barras retornado seja válido", async () => {
@@ -70,15 +71,11 @@ describe("Testes responsáveis por validar regra de negocio em cima da montagem 
     };
 
     const result = await formatBarcode.handle({
-      campo_a,
-      campo_b,
-      campo_c,
-      campo_d,
-      campo_e
+      fields: { campo_a, campo_b, campo_c, campo_d, campo_e },
     });
 
-    expect(result).not.toBeNull()
-    expect(result.str_barcode).toBe(EXPECT_BARCODE)
+    expect(result).not.toBeNull();
+    expect(result.str_barcode).toBe(EXPECT_BARCODE);
   });
 
   test("Espero que o valor presente no código de barras seja válido", async () => {
@@ -109,14 +106,16 @@ describe("Testes responsáveis por validar regra de negocio em cima da montagem 
     };
 
     const result = await formatBarcode.handle({
-      campo_a,
-      campo_b,
-      campo_c,
-      campo_d,
-      campo_e
+      fields: {
+        campo_a,
+        campo_b,
+        campo_c,
+        campo_d,
+        campo_e,
+      },
     });
 
-    expect(result.amount).toBe("20.00")
+    expect(result.amount).toBe("20.00");
   });
 
   test("Espero que a função consiga lidar com a data de validade do boleto", async () => {
@@ -147,28 +146,31 @@ describe("Testes responsáveis por validar regra de negocio em cima da montagem 
     };
 
     const result = await formatBarcode.handle({
-      campo_a,
-      campo_b,
-      campo_c,
-      campo_d,
-      campo_e
+      fields: {
+        campo_a,
+        campo_b,
+        campo_c,
+        campo_d,
+        campo_e,
+      },
     });
 
-    expect(result.expiration_date).toEqual(campo_e.vencimento)
+    expect(result.expiration_date).toEqual(campo_e.vencimento);
 
     const formatedDate = "04-22-2022";
     const result_with_date = await formatBarcode.handle({
-      campo_a,
-      campo_b,
-      campo_c,
-      campo_d,
-      campo_e: {
-        ...campo_e,
-        vencimento: new Date(formatedDate)
-      }
+      fields: {
+        campo_a,
+        campo_b,
+        campo_c,
+        campo_d,
+        campo_e: {
+          ...campo_e,
+          vencimento: new Date(formatedDate),
+        },
+      },
     });
 
-    expect(result_with_date.expiration_date).toEqual(campo_e.vencimento)
-
+    expect(result_with_date.expiration_date).toEqual(campo_e.vencimento);
   });
 });

@@ -4,7 +4,7 @@ import {
   IBarcodeTypeC,
   IBarcodeTypeD,
   IBarcodeTypeE,
-} from "../../domain/entities/TypeBarcode";
+} from "../../domain/entities/TypeBarcode/BankBarcodeType";
 import IValidateCheckDigitInBarcodeField, {
   IRequest,
   IResponse,
